@@ -1,0 +1,14 @@
+/*
+elementon(+Lista,+N,-R).
+  es cierto cuando R unifica con el elemento de Lista que ocupa la posicion N
+  empezando a contar en 1.
+
+
+
+
+
+*/
+
+elementon([cab|_], 1, Cab).
+
+elementon([_|Resto], N, R) :- N>1, N2 is N-1, elementon(Resto,N2,R).
