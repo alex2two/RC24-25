@@ -1,0 +1,17 @@
+/*
+13/03/2025 (Pienso que solo y exclusivamente con los conocimientos actuales no se puede realizar)
+                                                                 |
+                                                                 v
+                              (unicidad, operaciones aritmeticas basicas, primera clase de listas...)
+
+comprime(Lista,R)
+  es cierto si R unifica con una Lista de la sigueitne forma:
+
+  comprime([a,a,a,b,b,c,a,a], R).
+  R=[(a,3),(b,2),(c,1),(a,2)].
+
+  comprime([],[]).
+  comprime([cab|res], ) :- 
+
+
+*/
