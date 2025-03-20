@@ -1,0 +1,12 @@
+/*
+my_reverse(?Lista,Resultado).
+
+sera cierto si Resultado unifica con la Lista que tenga todos los elemenos en el orden inverso
+
+my_reverse([1,2,3,4,5], R).
+R=[5,4,3,2,1].
+*/
+
+my_reverse([],R) :- R=[].
+
+my_reverse([cab|_], R2 ) :- my_reverse(cab,R), R2 is R + cab.
