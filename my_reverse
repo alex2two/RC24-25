@@ -7,6 +7,6 @@ my_reverse([1,2,3,4,5], R).
 R=[5,4,3,2,1].
 */
 
-my_reverse([],R) :- R=[].
+my_reverse([],[]).
 
-my_reverse([cab|_], R2 ) :- my_reverse(cab,R), R2 is R + cab.
+my_reverse([Cab|Resto], R2 ) :- my_reverse(Resto,R), append(R,[Cab],R2).
