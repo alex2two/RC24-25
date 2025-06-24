@@ -1,0 +1,50 @@
+LISTA REVERSA
+
+FUNCION
+
+my_reverse(?Lista,Resultado).
+
+Sera cierto cuando Resultado unifica con la Lista que tenga todos los elementos en orden inverso.
+
+EJ: my_reverse([1,2,3,4,5], R).
+	R=[5,4,3,2,1].
+
+my_reverse([],[]).
+
+my_reverse([Cab|Resto],R2 ) :- my_reverse(Resto, R), append(R,cab,R2).
+
+cab 1
+resto 2,3,4,5
+R 5,4,3,2
+
+------------------------------------------------------------------------------------------
+ELEMENTO N 
+
+FUNCION
+
+elementon(?Lista, +N, -R)
+
+Sera cierto cuando R unifique con el elemento que este en la posición N de Lista
+
+EJ: elementon([a,b,c],2,X).
+	X=b.
+
+elementon([Cab|_],1,Cab).
+
+elementon([_|Resto],N, R) :- N>1, N2 is N-1, elementon(Resto,N2,R).
+
+ESTO SE EJECUTA DE UNA MANERA RECURSIVA, SI CUANDO LLEGA LA FUNCION "N" ES MAYOR QUE 1 SE SEPARA LA CABEZA Y SE USARA COMO SUTITUTO N2 PARA VERIFICAR DE NUEVO LA RECURSIVIDAD, CUANDO LLEGA  ALA SEGUNDA FUNCION ESA SOLO TRATA DE ELEGIR EL CAMINO, SI N2 QUE PREVIAMENTE HA OBTENIDO EL VALOR RESTADO DE N, SI N2 ES 1 SE USARA LA FUNCION BASE Y UNIFICARA CON EL ELEMENTO CABEZA, SIN EMBARGO SI N2 SIGUE SIENDO MAYOR VOLVERA A HACER EL CICLO DE RESTA Y LLAMADA A LA FUNCIO, ASI HASTA QUE LLEGUE EL MOMENTO DE QUE N2 SEA 1 Y SE UNIFIQUE CON LA CABEZA SI O SI
+-------------------------------------------------------------------------------------------
+LONGITUD
+
+FUNCION
+
+my_length(?Lista, -R)
+
+será cierto cuando R unifique con la cantidad de elementos que tiene Lista
+
+EJ: my_length([1,2,3,4], 4).
+
+my_length([],0).
+
+my_length([_|Resto], R2):- my_length(Resto,R), R2 is R+1.
