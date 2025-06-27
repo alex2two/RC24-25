@@ -48,3 +48,15 @@ EJ: my_length([1,2,3,4], 4).
 my_length([],0).
 
 my_length([_|Resto], R2):- my_length(Resto,R), R2 is R+1.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ORDENACION QUICKSORT
+
+FUNCION
+
+
+
+% divide(+Elem, +Lista, -Menores, -Mayores)
+% sera cierto cuando todos los elementos de Menores y Mayores
+% se encuentren en Lista 
