@@ -54,9 +54,58 @@ my_length([_|Resto], R2):- my_length(Resto,R), R2 is R+1.
 ORDENACION QUICKSORT
 
 FUNCION
+% ordena_quick(+Lista,-ListaR).
+% sera cierto cuando ListaR unifique con todos los elementos de Lista ordenados de menor a mayor.
+
+ordena_quick([],[]).
+
+ordena_quick([cab|Resto], ListaR):- divide(cab, Resto,Men,May), 
+ordena_quick(Men,Men2), 
+ordena_quick(May, May2), 
+append(Men2, [Cab|May2],ListaR).
 
 
-
-% divide(+Elem, +Lista, -Menores, -Mayores)
+% divide(+Elem, +Lista, -Menores, -Mayores)-----------------------------
 % sera cierto cuando todos los elementos de Menores y Mayores
 % se encuentren en Lista 
+
+divide([],[],[],[]).
+
+divide(E, [cab|L], [Cab|Menores], Mayores):- Cab =< E, divide(E,L,Menores,Mayores).
+
+divide(E, [cab|L], Menores, [Cab|Mayores]):- Cab > E, divide(E,L,Menores,Mayores).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NUMEROS PRIMOS
+
+FUNCIONES 
+
+% primo(+X)----------------------------------------------
+% sera cierto cuando X sea un numero primo
+primo(_).
+
+primo(X):- lista_divisores(X, 1, [X|1]), 
+
+% lista_divisores(+X, +Y, -ListaD)-----------------------
+% sera cierto cuando ListaD unifique con los numeros 
+% divisibles que hay entre X e Y
+
+lista_divisores(X,X,[X]).
+
+lista_divisores(X, Y, Lista):- X mod Y is 0, 
+append(Lista,Y,ListaR), 
+Y is Y+1, 
+lista_divisores(X, Y, ListaR). 
+
+% primosentrexy(+X, +Y, -ListaR)-------------------------
+% sera cierto cuando ListaR unifica con los elementos
+% que son primos entre X e Y
+
+primosentrexy(X,X,[X]).
+
+primosentrexy(X,Y, Lista):- primos(Y), 
+append(Lista, Y, ListaR), 
+Y<X, 
+Y is Y+1, 
+primosentrexy(X, Y, ListaR).
