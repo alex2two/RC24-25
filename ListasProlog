@@ -120,7 +120,7 @@ FUNCION
 
 permuta([],[]).
 
-permuta([Cab|Resto], ):- seleccionauno(), permuta(Resto, ListaR).
+permuta([Cab|Resto], Listaf):- selecciona_uno(Cab, [Cab|Resto], Listaf), permuta(Resto, Listaf).
 
 
 % selecciona_uno(+Elem, +Lista, -Resto)
@@ -128,4 +128,38 @@ permuta([Cab|Resto], ):- seleccionauno(), permuta(Resto, ListaR).
 % elemento de Lista y Resto unifica con una lista que tiene
 % los elementos de Lista en en el mismo orden menos el Elem
 
+selecciona_uno(E,[E|R],R).
 
+selecciona_uno(E, [Cab|Res], [Cab|R]):- selecciona_uno(Res, E, R).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+COMPRIME
+
+FUNCION
+% comprime(+Lista, -Resultado)
+% es cierto cuando Resultado unifica con Lista de la siguiente forma:
+%
+% comprime([a,a,a,b,b,c,c,d],R)
+% R= [(a,3), (b,2),(c,2),(d,1)]
+
+comprime([],[]).
+comprime([A], [A,1]).
+
+% Elementos consecutivos
+comprime([cab, cab|Resto], [(cab,N2)|L):- comprime([cab|Resto, [(cab, N)|L]), N2 is N+1.
+
+% Elementos no consecutivos ( distintos )
+comprime([cab1, cab2|Resto], ):- cab1 /= cab2, comprime([cab2|Resto], L).
+
+%comprime(Lista, ):- comprime(Resto, R).
+% MAL PENSADO
+% contador(+Elem, +Lista, -num, -res)
+% es cierto cuando res unifique con el numero
+% de elementos iguales a Elem en la lista
+%contador(E,[E],1,()).
+%
+%contador(E,[Cab|Resto] , num, res):- num==cab,
+%num is num + 1, 
+%res is (E,num),
+%contador(E, Resto, num, [(E,num)|R]).
