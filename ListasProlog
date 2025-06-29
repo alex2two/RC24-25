@@ -109,3 +109,23 @@ append(Lista, Y, ListaR),
 Y<X, 
 Y is Y+1, 
 primosentrexy(X, Y, ListaR).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PERMUTACIONES DE UNA LISTA
+
+FUNCION
+% permuta(+Lista,-ListaR)
+% sera cierto cuando ListaR unifique con
+% los elementos de Lista ordenados en cualquier orden
+
+permuta([],[]).
+
+permuta([Cab|Resto], ):- seleccionauno(), permuta(Resto, ListaR).
+
+
+% selecciona_uno(+Elem, +Lista, -Resto)
+% sera cierto cuando elem unifica con cualquier
+% elemento de Lista y Resto unifica con una lista que tiene
+% los elementos de Lista en en el mismo orden menos el Elem
+
+
