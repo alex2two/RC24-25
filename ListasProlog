@@ -171,6 +171,15 @@ comprime([cab1, cab2|Resto], ):- cab1 /= cab2, comprime([cab2|Resto], L).
 % y Num unifica con el número de veces que se
 % repite dicho elemento.
 
-mas_veces()
+mas_veces(Lista, Elem, N):-
+  msort(Lista, ListaOrdenada),
+  comprime(ListaOrdenada, R),
+  mayor(R, Elem, N).
+  
+mayor([], _, 0).  
+mayor([(E,N)|Resto], E, N):-
+  mayor(Resto, _, N1), N >= N1.
+mayor([(_,N)|Resto], E1, N1):-
+  mayor(Resto, E1, N1), N < N1.  
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------
