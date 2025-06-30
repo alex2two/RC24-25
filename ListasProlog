@@ -163,3 +163,14 @@ comprime([cab1, cab2|Resto], ):- cab1 /= cab2, comprime([cab2|Resto], L).
 %num is num + 1, 
 %res is (E,num),
 %contador(E, Resto, num, [(E,num)|R]).
+
+%------------------------------------------------------
+% mas_veces(+Lista, -Elem, -Num)
+% es cierto cuando Elem unifica con el elemento
+% que se repite más veces en la lista Lista
+% y Num unifica con el número de veces que se
+% repite dicho elemento.
+
+mas_veces()
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------
