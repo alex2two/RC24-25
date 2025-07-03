@@ -67,7 +67,48 @@ cuenta_hojas(Hi, Ni),
 cuenta_hojas(Hd, Nd), 
 Ht is Ni + Nd.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+% SUMA NODOS
+
+% suma_nodos(+Arbol, -N)
+% es cierto cuando N unifica con la suma
+% del contenido de los nodos de Arbol.
+
+suma_nodos(nil, 0).
+
+% SI EL CONTENIDO ES UN NUMERO
+suma_nodos(A(X,Hi,Hd), NT):- number(X), suma_nodos(Hi, Ni), suma_nodos(Hd, Nd), NT is Ni + Nd + X.
+
+suma_nodos(A(X,Hi,Hd), NT):- /+number(X), suma_nodos(Hi, Ni), suma_nodos(Hd,Nd), NT is Ni + Nd.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+% PERTENECE
+
+% pertenece(+Arbol, +Elem)
+% es cierto si Elem se encuentra en Arbol
+
+pertenece(A(E,nil,nil), Elem).
+
+pertenece(A(E,_,_), Elem).
+
+pertenece(A(E,Hi,_), Elem):- E \= Elem, pertenece(Hi, Elem).
+
+pertenece(A(E,_,Hd), Elem):- E \= Elem, pertenece(Hd, Elem).
+
+%pertenece(A(X, Hi, Hd), Elem):- Elem \== X, pertenece(Hi, Elem), pertenece(Hd, Elem).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+% CREA ABB
+
+%crea_abb(+Lista, -Arbol)
+% es cierto cuando Arbol es un ABB, procedente de la Lista
+
+crea_abb([], nil).
+
+crea_abb(Lista, A(et, Ai, Ad):- msort(Lista),  length(Lista, Lon),  N is Lon div 2, length(L1, N), append(L1, [et|L2], Lista), crear_abb(L1, Ai), crear_abb(L2, Ad).
 
 
 
