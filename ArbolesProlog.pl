@@ -39,6 +39,33 @@ lista_hojas(A(E, nil, nil), [E]).
 
 hoja(a(_, nil, nil)).
 
+---------------------------------------------------------------------------------------------------------
+CUENTA INTERNOS
+
+FUNCION
+% cuenta_internos(+Arbol, -N)
+% es cierto cuando N unifica con el numero
+% de nodos que no son hojas (internos)
+
+cuenta_internos(A(_,nil,nil), 1).
+
+cuenta_internos(A(_, Hd, Hi), It):- 
+cuenta_hojas(A(_,Hi,Hd), Ht), 
+cuenta_nodos(Hd, ND), 
+cuenta_nodos(Hi, NI), 
+Nt is ND + NI, 
+It is Nt - Ht.
+
+% cuenta_hojas(+Arbol, -N) ---------------------------------------
+% es cierto cuando N unifica con el numero de hojas de Arbol
+
+cuenta_hojas(A(_,nil,nil), 1).
+
+cuenta_hojas(A(_, Hi, Hd), Ht):- 
+/+ hoja(A(_,Hi,Hd)), 
+cuenta_hojas(Hi, Ni), 
+cuenta_hojas(Hd, Nd), 
+Ht is Ni + Nd.
 
 
 
