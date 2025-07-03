@@ -1,12 +1,12 @@
-ARBOLES
--------
+%ARBOLES
+%-------
 
-ARBOLES BINARIOS
-----------------
+%ARBOLES BINARIOS
+%----------------
 
-CUENTA NODOS
+%CUENTA NODOS
 
-FUNCION 
+%FUNCION 
 % cuenta_nodos(+Arbol, -Nodos)
 % es cierto cuando Nodos unifica con el 
 % numero de nodos de un Arbol
@@ -15,11 +15,11 @@ cuenta_nodos(nil, 0).
 
 cuenta_nodos(A(_,Hi,Hd), NT):- cuenta_nodos(Hi, N), cuenta_nodos(Hd, M), NT is M + N + 1.
 
----------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------------------------------------------
 
-CUENTA HOJAS
+%CUENTA HOJAS
 
-FUNCION
+%FUNCION
 %lista_hojas(+ArbolB, -NumHojas)
 % es cierto cuando NumHojas unifica con el
 % numero de hojas que tiene ArbolB
@@ -39,10 +39,10 @@ lista_hojas(A(E, nil, nil), [E]).
 
 hoja(a(_, nil, nil)).
 
----------------------------------------------------------------------------------------------------------
-CUENTA INTERNOS
+%---------------------------------------------------------------------------------------------------------
+%CUENTA INTERNOS
 
-FUNCION
+%FUNCION
 % cuenta_internos(+Arbol, -N)
 % es cierto cuando N unifica con el numero
 % de nodos que no son hojas (internos)
